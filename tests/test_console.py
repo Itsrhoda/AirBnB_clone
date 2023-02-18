@@ -151,7 +151,7 @@ class TestHBNBCommand_create(unittest.TestCase):
             self.assertEqual(correct, output.getvalue().strip())
 
     def test_create_invalid_syntax(self):
-        correct = "** Unknown syntax: MyModel.create()"
+        correct = "*** Unknown syntax: MyModel.create()"
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("MyModel.create()"))
             self.assertEqual(correct, output.getvalue().strip())
@@ -419,7 +419,7 @@ class TestHBNBCommand_show(unittest.TestCase):
             self.assertEqual(obj.__str__(), output.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as output:
              self.assertFalse(HBNBCommand().onecmd("create Place"))
-            testID = output.getvalue().strip()
+             testID = output.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as output:
             obj = storage.all()["Place.{}".format(testID)]
             command = "Place.show({})".format(testID)
